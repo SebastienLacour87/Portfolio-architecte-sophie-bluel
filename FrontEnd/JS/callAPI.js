@@ -16,7 +16,7 @@ export function getWorks() {
     })
     .catch((err) => console.error("Impossible de récupérer les works :", err));
 }
-
+// récupération des catégories depuis l'API
 export function getCategories() {
   return fetch(`${url}/categories`)
     .then((reponse) => {
@@ -26,4 +26,21 @@ export function getCategories() {
     .catch((err) =>
       console.error("Impossible de récupérer les catégories :", err),
     );
+}
+// récupération des informations connexion depuis l'API
+export function login(email, password) {
+  return fetch(`${url}/users/login`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((reponse) => {
+      if (!reponse.ok) throw new Error("Identifiants incorrects");
+      return reponse.json();
+    })
+    .catch((err) => {
+      throw err; //on remonte l'erreur pour la gérer dans lgin.js
+    });
 }

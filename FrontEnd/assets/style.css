@@ -384,3 +384,23 @@ footer nav ul {
 .footer-nav {
   margin-top: 180px;
 }
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+/* style  mode édition */
+#edit-banner {
+  display: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+#btn-modifier {
+  display: inline;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Work Sans";
+}

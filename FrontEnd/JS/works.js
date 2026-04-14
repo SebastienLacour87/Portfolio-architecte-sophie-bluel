@@ -26,3 +26,16 @@ function showImages() {
   });
 }
 showImages();
+
+const token = localStorage.getItem("token");
+
+if (token) {
+  // bandeau
+  document.getElementById("edit-banner").style.display = "block";
+  //login - > logout
+  document.querySelector("li.login").textContent = "logout";
+  //cacher les filtres
+  document.querySelector(".filters").style.display = "none";
+  // afficher bouton modifier
+  document.getElementById("btn-modifier").style.display = "inline";
+}
