@@ -13,14 +13,15 @@ function genererWorks(works) {
   });
 }
 
-export function filsterWorks(categoryId) {
+export function filterWorks(categoryId) {
   const filtered = categoryId
-    ? allWorks.filter((w) => w.category.id === categoryID)
+    ? allWorks.filter((w) => w.category.id === categoryId)
     : allWorks;
   genererWorks(filtered);
 }
 function showImages() {
   Api.getWorks().then((works) => {
+    allWorks = works;
     genererWorks(works);
   });
 }
