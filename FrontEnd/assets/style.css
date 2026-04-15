@@ -398,7 +398,7 @@ footer nav ul {
   padding: 10px;
 }
 #btn-modifier {
-  display: inline;
+  display: none;
   background: transparent;
   border: none;
   cursor: pointer;
