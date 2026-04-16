@@ -19,10 +19,10 @@ export function filterWorks(categoryId) {
     : allWorks;
   genererWorks(filtered);
 }
-function showImages() {
+export function showImages(gallery) {
   Api.getWorks().then((works) => {
     allWorks = works;
-    genererWorks(works);
+    gallery(works);
   });
 }
-showImages();
+showImages(genererWorks);
