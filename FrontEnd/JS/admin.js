@@ -79,3 +79,21 @@ document.getElementById("modal-close-form").addEventListener("click", () => {
   document.getElementById("modal-form").style.display = "none";
   document.getElementById("modal-gallery").style.display = "block";
 });
+
+document.getElementById("file-input").addEventListener("change", (event) => {
+  document.getElementById("picture-upload-content").style.display = "none";
+  const previewFile = event.target.files[0];
+  const image = document.getElementById("preview");
+  image.setAttribute("src", URL.createObjectURL(previewFile));
+  image.style.display = "block";
+});
+function formCategories() {
+  const c = document.getElementById("category");
+  return Api.getCategories().then((cat) => {
+    cat.forEach((categories) => {
+      c.innerHTML += `<option value="${categories.id}">${categories.name}
+      </option>`;
+    });
+  });
+}
+formCategories();

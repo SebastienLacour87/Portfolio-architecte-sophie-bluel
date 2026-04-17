@@ -507,6 +507,13 @@ footer nav ul {
   font-size: 26px;
   font-weight: 400;
 }
+#picture-upload-content {
+  display: block;
+}
+#preview {
+  display: none;
+  height: 193px;
+}
 
 #picture-upload {
   display: flex;

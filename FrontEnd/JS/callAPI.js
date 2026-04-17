@@ -44,3 +44,20 @@ export function login(email, password) {
       throw err; //on remonte l'erreur pour la gérer dans lgin.js
     });
 }
+
+// fonction de suppression de fichier de l'API
+export function deleteWork(id) {
+  return fetch(`${url}/works/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer  ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((reponse) => {
+      if (!reponse.ok) throw new Error("impossible de supprimer un élément");
+      return reponse;
+    })
+    .catch((err) => {
+      throw err;
+    });
+}
