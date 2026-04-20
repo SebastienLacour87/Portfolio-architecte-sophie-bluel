@@ -50,12 +50,32 @@ export function deleteWork(id) {
   return fetch(`${url}/works/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer  ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
     .then((reponse) => {
       if (!reponse.ok) throw new Error("impossible de supprimer un élément");
       return reponse;
+    })
+    .catch((err) => {
+      throw err;
+    });
+}
+
+//fonction d'ajout de projet a l'api
+export function addWork(image, title, category) {
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("title", title);
+  formData.append("category", parseInt(category));
+  return fetch(`${url}/works`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    body: formData,
+  })
+    .then((reponse) => {
+      if (!reponse.ok) throw new Error("impossible d'ajouter un élément");
+      return reponse.json(); //retounre l'objet créé
     })
     .catch((err) => {
       throw err;

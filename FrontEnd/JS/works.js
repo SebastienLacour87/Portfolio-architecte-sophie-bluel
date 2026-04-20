@@ -6,7 +6,7 @@ function genererWorks(works) {
   const galery = document.querySelector(".gallery");
   galery.innerHTML = ""; //vide la galerie
   return works.forEach((items) => {
-    galery.innerHTML += `<figure> 
+    galery.innerHTML += `<figure data-id="${items.id}"> 
                             <img src="${items.imageUrl}" alt="${items.title}">
                             <figcaption>${items.title}</figcaption>
                           </figure>`;
@@ -26,3 +26,12 @@ export function showImages(gallery) {
   });
 }
 showImages(genererWorks);
+
+export function showNewWork(work) {
+  const gallery = document.querySelector(".gallery");
+
+  gallery.innerHTML += `<figure data-id="${work.id}"> 
+                            <img src="${work.imageUrl}" alt="${work.title}">
+                            <figcaption>${work.title}</figcaption>
+                          </figure>`;
+}

@@ -629,3 +629,7 @@ footer nav ul {
   background-color: #ccc;
   cursor: not-allowed;
 }
+.btn-submit-active {
+  background: #1d6154;
+  color: white;
+}
