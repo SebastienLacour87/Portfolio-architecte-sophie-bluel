@@ -119,14 +119,28 @@ document.querySelector("#modal-form form").addEventListener("submit", (e) => {
   const title = document.getElementById("title").value;
   const category = document.getElementById("category").value;
   const image = document.getElementById("file-input").files[0];
-  Api.addWork(image, title, category).then((newWork) => {
-    showNewWork(newWork); // galerie principale
-    showNewWorkInModal(newWork); //galerie modale)
-    localStorage.removeItem("works");
-    document.querySelector("#modal-form form").reset();
-    document.getElementById("picture-upload-content").style.display = "block";
-    document.getElementById("preview").style.display = "none";
-  });
+  Api.addWork(image, title, category)
+    .then((newWork) => {
+      showNewWork(newWork); // galerie principale
+      showNewWorkInModal(newWork); //galerie modale)
+      localStorage.removeItem("works");
+      document.querySelector("#modal-form form").reset();
+      const existingError = document.querySelector(".error-message");
+      if (existingError) existingError.remove();
+      document.getElementById("picture-upload-content").style.display = "block";
+      document.getElementById("preview").style.display = "none";
+      const btn = document.querySelector("#modal-form button[type='submit']");
+      btn.classList.remove("btn-submit-active");
+      btn.classList.add("disabled");
+    })
+    .catch((err) => {
+      const existingError = document.querySelector(".error-message");
+      if (existingError) existingError.remove();
+      const error = document.createElement("p");
+      error.textContent = "ajout de fichier impossible";
+      error.classList.add("error-message");
+      document.querySelector("#modal-form form").appendChild(error);
+    });
 });
 
 function showNewWorkInModal(work) {
