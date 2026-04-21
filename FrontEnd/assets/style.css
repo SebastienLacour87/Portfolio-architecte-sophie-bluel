@@ -529,9 +529,6 @@ footer nav ul {
 }
 
 /* style de claude */
-#modal-form {
-  display: none;
-}
 
 #modal-back {
   position: absolute;
@@ -629,7 +626,7 @@ footer nav ul {
   background-color: #ccc;
   cursor: not-allowed;
 }
-.btn-submit-active {
+#modal-form button[type="submit"].btn-submit-active {
   background: #1d6154;
   color: white;
 }
