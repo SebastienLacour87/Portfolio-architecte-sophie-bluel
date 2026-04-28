@@ -16,8 +16,6 @@ export function getWorks() {
       return reponse.json();
     })
     .then((works) => {
-      // Stocke les données en cache pour les prochains appels
-      localStorage.setItem("works", JSON.stringify(works));
       return works;
     })
     .catch((err) => console.error("Impossible de récupérer les works :", err));

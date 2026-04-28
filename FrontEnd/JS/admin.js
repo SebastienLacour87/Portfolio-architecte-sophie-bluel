@@ -148,8 +148,6 @@ document.querySelector("#modal-form form").addEventListener("submit", (e) => {
       showNewWork(newWork);
       // Ajoute le nouveau travail dans la galerie de la modale
       showNewWorkInModal(newWork);
-      // Invalide le cache pour forcer un rechargement depuis l'API
-      localStorage.removeItem("works");
       // Réinitialise le formulaire pour un nouvel ajout
       document.querySelector("#modal-form form").reset();
       const existingError = document.querySelector(".error-message");
