@@ -7,9 +7,6 @@ const url = "http://localhost:5678/api";
 // Si le cache existe, retourne directement les données sans appeler l'API
 // Le cache est invalidé manuellement lors d'un ajout ou d'une suppression
 export function getWorks() {
-  const cache = localStorage.getItem("works");
-  if (cache) return Promise.resolve(JSON.parse(cache));
-
   return fetch(`${url}/works`)
     .then((reponse) => {
       if (!reponse.ok) throw new Error(`Erreur HTTP : ${reponse.status}`);
